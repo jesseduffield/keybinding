@@ -1,8 +1,9 @@
 package keybinding
 
 import (
-	"github.com/awesome-gocui/gocui"
 	"testing"
+
+	"github.com/jesseduffield/gocui"
 )
 
 func TestParse(t *testing.T) {

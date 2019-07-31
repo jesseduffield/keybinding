@@ -5,7 +5,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/awesome-gocui/gocui"
+	"github.com/jesseduffield/gocui"
 )
 
 var translate = map[string]string{
@@ -168,7 +168,6 @@ func ParseAll(input string) ([]Key, error) {
 	}
 	return ret, nil
 }
-
 
 func MustParse(input string) Key {
 	if key, err := Parse(input); err != nil {
