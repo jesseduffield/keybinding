@@ -1,8 +1,9 @@
-github.com/awesome-gocui/gocui v0.5.0 h1:ri9VZLWHKIH/dq/AfkGe5F8976KWRmKb6ZqcCnyQB/4=
-github.com/awesome-gocui/gocui v0.5.0/go.mod h1:1QikxFaPhe2frKeKvEwZEIGia3haiOxOUXKinrv17mA=
-github.com/awesome-gocui/termbox-go v0.0.0-20190427202837-c0aef3d18bcc h1:wGNpKcHU8Aadr9yOzsT3GEsFLS7HQu8HxQIomnekqf0=
-github.com/awesome-gocui/termbox-go v0.0.0-20190427202837-c0aef3d18bcc/go.mod h1:tOy3o5Nf1bA17mnK4W41gD7PS3u4Cv0P0pqFcoWMy8s=
 github.com/go-errors/errors v1.0.1 h1:LUHzmkK3GUKUrL/1gfBUxAHzcev3apQlezX/+O7ma6w=
 github.com/go-errors/errors v1.0.1/go.mod h1:f4zRHt4oKfwPJE5k8C9vpYG+aDHdBFUsgrm6/TyX73Q=
+github.com/jesseduffield/gocui v0.3.1-0.20190727020746-c5b8f884b6a2 h1:6p0BXizlzfp3suTuMumRRFmlGuk/1VPnLIxKnJYG6Ag=
+github.com/jesseduffield/gocui v0.3.1-0.20190727020746-c5b8f884b6a2/go.mod h1:2RtZznzYKt8RLRwvFiSkXjU0Ei8WwHdubgnlaYH47dw=
+github.com/jesseduffield/termbox-go v0.0.0-20190630083001-9dd53af7214e h1:tth7wr6+sfSbdpRWWrwvLYyS56HyIRVfq0Qcl2h28wM=
+github.com/jesseduffield/termbox-go v0.0.0-20190630083001-9dd53af7214e/go.mod h1:anMibpZtqNxjDbxrcDEAwSdaJ37vyUeM1f/M4uekib4=
 github.com/mattn/go-runewidth v0.0.4 h1:2BvfKmzob6Bmd4YsL0zygOqfdFnK7GR4QL06Do4/p7Y=
 github.com/mattn/go-runewidth v0.0.4/go.mod h1:LwmH8dsx7+W8Uxz3IHJYH5QSwggIsqBzpuz5H//U1FU=
+github.com/nsf/termbox-go v0.0.0-20190624072549-eeb6cd0a1762/go.mod h1:IuKpRQcYE1Tfu+oAQqaLisqDeXgjyyltCfsaoYN18NQ=
