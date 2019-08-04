@@ -5,7 +5,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/awesome-gocui/gocui"
+	"github.com/jesseduffield/gocui"
 )
 
 var translate = map[string]string{

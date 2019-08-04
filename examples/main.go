@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/awesome-gocui/keybinding"
+	"github.com/jesseduffield/keybinding"
 )
 
 // show will call the ParseAll function
