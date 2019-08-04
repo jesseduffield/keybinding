@@ -19,9 +19,9 @@ func show(keyStr string) {
 // must will call the MustParseAll function
 func must(keyStr string) {
 	defer func() {
-        if r := recover(); r != nil {
-            fmt.Println("Error caught: ", r)
-        }
+		if r := recover(); r != nil {
+			fmt.Println("Error caught: ", r)
+		}
 	}()
 
 	keys := keybinding.MustParseAll(keyStr)
@@ -32,6 +32,7 @@ func main() {
 	fmt.Println("The show calls:")
 	show("ctrl+a")
 	show("ctrl+b")
+	show("MouseLeft")
 	show("ctrl+/, tab")
 	show("ctrl+   alt +/")
 	show("jibber+   jabber +/") // This will fail

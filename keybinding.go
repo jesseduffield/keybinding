@@ -106,14 +106,23 @@ var supportedKeybindings = map[string]gocui.Key{
 	"KeySpace":          gocui.KeySpace,
 	"KeyBackspace2":     gocui.KeyBackspace2,
 	"KeyCtrl8":          gocui.KeyCtrl8,
+	"MouseLeft":         gocui.MouseLeft,
+	"MouseMiddle":       gocui.MouseMiddle,
+	"MouseRight":        gocui.MouseRight,
+	"MouseRelease":      gocui.MouseRelease,
+	"MouseWheelUp":      gocui.MouseWheelUp,
+	"MouseWheelDown":    gocui.MouseWheelDown,
 }
 
+// Key contains all relevant information about the key
 type Key struct {
 	Value    gocui.Key
 	Modifier gocui.Modifier
 	Tokens   []string
 }
 
+// Parse turns the input string into an actual Key.
+// Returns an error when something goes wrong
 func Parse(input string) (Key, error) {
 	f := func(c rune) bool { return unicode.IsSpace(c) || c == '+' }
 	tokens := strings.FieldsFunc(input, f)
@@ -121,7 +130,7 @@ func Parse(input string) (Key, error) {
 	var modifier = gocui.ModNone
 
 	for _, token := range tokens {
-		normalized := strings.ToLower(token)
+		normalized := token
 
 		if value, exists := translate[normalized]; exists {
 			normalized = value
@@ -142,7 +151,10 @@ func Parse(input string) (Key, error) {
 		normalizedTokens = append(normalizedTokens, normalized)
 	}
 
-	lookup := "Key" + strings.Join(normalizedTokens, "")
+	lookup := strings.Join(normalizedTokens, "")
+	if !strings.Contains(lookup, "Mouse") {
+		lookup = "Key" + strings.Join(normalizedTokens, "")
+	}
 
 	if key, exists := supportedKeybindings[lookup]; exists {
 		return Key{key, modifier, normalizedTokens}, nil
@@ -151,9 +163,12 @@ func Parse(input string) (Key, error) {
 	if modifier != gocui.ModNone {
 		return Key{0, modifier, normalizedTokens}, fmt.Errorf("unsupported keybinding: %s (+%+v)", lookup, modifier)
 	}
+
 	return Key{0, modifier, normalizedTokens}, fmt.Errorf("unsupported keybinding: %s", lookup)
 }
 
+// ParseAll parses all strings to a Key.
+// Returns an error when something goes wrong.
 func ParseAll(input string) ([]Key, error) {
 	ret := make([]Key, 0)
 	for _, value := range strings.Split(input, ",") {
@@ -169,6 +184,9 @@ func ParseAll(input string) ([]Key, error) {
 	return ret, nil
 }
 
+// MustParse parses the input string to a key but instead an
+// error, it panics when things go wrong.
+// This forces the caller to react to an error
 func MustParse(input string) Key {
 	if key, err := Parse(input); err != nil {
 		panic(err)
@@ -177,6 +195,9 @@ func MustParse(input string) Key {
 	}
 }
 
+// MustParseAll parses all the input strings to a key but instead an
+// error, it panics when things go wrong.
+// This forces the caller to react to an error
 func MustParseAll(input string) []Key {
 	if key, err := ParseAll(input); err != nil {
 		panic(err)
@@ -185,6 +206,7 @@ func MustParseAll(input string) []Key {
 	}
 }
 
+// String returns the Key in string form
 func (key Key) String() string {
 	displayTokens := make([]string, 0)
 	prefix := ""
