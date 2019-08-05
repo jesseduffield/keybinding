@@ -116,7 +116,7 @@ var supportedKeybindings = map[string]gocui.Key{
 
 // Key contains all relevant information about the key
 type Key struct {
-	Value    gocui.Key
+	Value    interface{}
 	Modifier gocui.Modifier
 	Tokens   []string
 }
@@ -124,6 +124,10 @@ type Key struct {
 // Parse turns the input string into an actual Key.
 // Returns an error when something goes wrong
 func Parse(input string) (Key, error) {
+	if len(input) == 1 && unicode.IsLetter(rune(input[0])) {
+		return Key{rune(input[0]), gocui.ModNone, []string{input}}, nil
+	}
+	
 	f := func(c rune) bool { return unicode.IsSpace(c) || c == '+' }
 	tokens := strings.FieldsFunc(input, f)
 	var normalizedTokens []string
